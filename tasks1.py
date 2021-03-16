@@ -5,12 +5,13 @@ import numpy.random as rand
 def main():
     #print(triangle([1,2,1]))
     #print(maxnum([3,30,34,5,9]))
-    m = 3
-    n = 4
+    m = 6
+    n = 6
     min_limit = 1
     max_limit = 100
     matrix = rand.randint(min_limit,max_limit,(m,n))
     print(matrix)
+    print(diagonalsort(matrix,m,n))
 
 #Треугольник с максимальным периметром
 def triangle(nums):
@@ -67,12 +68,45 @@ def maxnum(nums):
 #сортировка по дмагонали
 def diagonalsort(matrix,m,n):
     k=abs(m-n)
-    start_coll
-    if(n>m):
+    start_coll=0
+    if(n>=m):
+        #cортируем середину
         while k>=0:
-
+            list_to_sort=[]
             for i in range (m):
+                list_to_sort.append(matrix[i][start_coll+i])
+            sorted_list= np.sort(np.array(list_to_sort))
+            for i in range (m):
+                matrix[i][start_coll+i]=sorted_list[i]
+            start_coll+=1
+            k-=1
+        lines_col=1
+        #верхняя часть
+        while start_coll<n:
+            list_to_sort=[]
+            for i in range (m-lines_col):
+                list_to_sort.append(matrix[i][start_coll+i])
+            sorted_list= np.sort(np.array(list_to_sort))
+            for i in range (m-lines_col):
+                matrix[i][start_coll+i]=sorted_list[i]
+            start_coll+=1
+            lines_col+=1
+        start_line=1
+        #нижняя часть
+        while start_line<m:
+            list_to_sort=[]
+            k=0
+            for i in range (start_line,m):
+                list_to_sort.append(matrix[i][k])
+                k+=1
+            sorted_list= np.sort(np.array(list_to_sort))
+            k=0
+            for i in range (start_line,m):
+                matrix[i][k]=sorted_list[k]
+                k+=1
+            start_line+=1
 
+    return matrix
 
 if __name__ == "__main__":
 	main()
