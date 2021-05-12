@@ -41,7 +41,7 @@ def shellsort(a,n,m):
             inc = inc//2
     return a
 
-def switchsort(a,n,m):
+def exchangesort(a,n,m):
     for l in range(n):
         k=m
         for k in range (m-1):
@@ -134,7 +134,7 @@ print(now-loop_start)
 #Обменом
 mas=matrix
 loop_start = time.perf_counter()
-print(switchsort(mas,n,m))
+print(exchangesort(mas,n,m))
 now = time.perf_counter()
 print(now-loop_start)
 
