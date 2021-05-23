@@ -8,11 +8,19 @@ def win_str(s1,s2):
     sort1.sort()
     sort2.sort()
     l = len(sort1)
+    count1 = 0
+    count2 = 0
     for i in range(l):
         if sort2[i] < sort1[i]:
-            return False
-    return True
-
+            count1 += 1
+        elif sort1[i] < sort2[i]:
+            count2 += 1
+    if count1 != 0 and count2 == 0:
+        return True
+    elif count2 != 0 and count1 == 0:
+        return True
+    else:
+        return False
 
 def find(s,current):
     l = 0
@@ -82,8 +90,9 @@ def substr(s):
             st = st[1:]
     return counter
 
+
 def main():
-    print(win_str("abc", "xya"))
+    print(win_str("abe", "acd"))
     print(polistr('c'))
     print(substr('abcabcabc'))
 
