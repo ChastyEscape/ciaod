@@ -134,6 +134,20 @@ def fibonaci(m, a):
             f0 = fibonaci_num(len(m))
 
 
+def Interpolation_find(mas, val):
+    low = 0
+    high = (len(mas) - 1)
+    while low <= high and val >= mas[low] and val <= mas[high]:
+        index = low + int(((float(high - low) / ( mas[high] - mas[low])) * ( val - mas[low])))
+        if mas[index] == val:
+            return index
+        if mas[index] < val:
+            low = index + 1;
+        else:
+            high = index - 1;
+    return -1
+
+
 m, a = generate_m()
 print(m, a)
 print(binary_find(m, a))
