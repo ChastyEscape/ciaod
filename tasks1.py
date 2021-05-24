@@ -2,9 +2,28 @@ import math
 import numpy as np
 import numpy.random as rand
 
+
+"""
+    Тимонин БФИ1901
+
+    Задача 1. «Треугольник с максимальным периметром»:
+        Массив A состоит из целых положительных чисел ­ длин отрезков. 
+    Составьте из трех отрезков такой треугольник, чтобы его периметр был максимально возможным. 
+    Если невозможно составить треугольник с положительной площадью ­ функция возвращает 0.
+
+    Задача 2. «Максимальное число»
+        Дан массив неотрицательных целых чисел nums. Расположите их в таком порядке, чтобы
+    вместе они образовали максимально возможное число.
+        Замечание: Результат может быть очень большим числом, поэтому представьте его как
+    string, а не integer.
+
+    Задача 3. «Сортировка диагоналей в матрице»
+        Дана матрица mat размером m * n, значения ­ целочисленные. Напишите функцию, 
+    сортирующую каждую диагональ матрицы по возрастанию и возвращающую получившуюся матриц
+"""
+
+
 def main():
-    #print(triangle([1,2,1]))
-    #print(maxnum([3,30,34,5,9]))
     m = 6
     n = 6
     min_limit = 1
@@ -12,6 +31,7 @@ def main():
     matrix = rand.randint(min_limit,max_limit,(m,n))
     print(matrix)
     print(diagonalsort(matrix,m,n))
+
 
 #Треугольник с максимальным периметром
 def triangle(nums):
@@ -38,6 +58,7 @@ def triangle(nums):
             else:
                 first+=1
     return sum
+
 
 #Максимальное число
 def maxnum(nums):
@@ -54,6 +75,7 @@ import math
 import numpy as np
 import numpy.random as rand
 
+
 def main():
     print(triangle([3,6,2,3]))
     print(maxnum([3,30,34,5,9]))
@@ -64,6 +86,7 @@ def main():
     matrix = rand.randint(min_limit,max_limit,(m,n))
     print(matrix)
     print(diagonal(matrix,m,n))
+
 
 #Треугольник с максимальным периметром
 def triangle(nums):
@@ -90,6 +113,7 @@ def triangle(nums):
             else:
                 first+=1
     return sum
+
 
 #Максимальное число
 def maxnum(nums):
@@ -117,6 +141,7 @@ def maxnum(nums):
         resstr=resstr+i
     return resstr       
 
+
 # выясняем размерность и если строк больше чем столбцов транспонируем
 def diagonal(matrix,m,n):
 		if(n>=m):
@@ -125,7 +150,8 @@ def diagonal(matrix,m,n):
 			m1=matrix.transpose()
 			m1=diagonalsort(m1,n,m)
 			return m1.transpose()
-	
+		
+		
 #сортировка по диагонали
 def diagonalsort(matrix,m,n):
     k=abs(m-n)
