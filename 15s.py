@@ -4,8 +4,6 @@ import argparse
 
 
 def manh_dst_matrix(a, b, n):
-    """Find manhattan distance between `a` and `b` in matrix of size `n`
-    """
     return abs(a % n - b % n) + abs(a // n - b // n)
 
 
@@ -53,8 +51,6 @@ class chain15:
         return int(dst)
 
     def last_node(self):
-        """Must be hashable value (list not hashable :( )
-        """
         return str(self.board_state)
 
     def linear_conflict(self):
@@ -69,15 +65,15 @@ class chain15:
 
     def corner_tiles(self):
         conflict_count = 0
-        # upper left corner
+
         if self.board_state[0] != 1:
             if self.board_state[1] == 2 or self.board_state[self.size] == self.size + 1:
                 conflict_count += 1
-        # upper right corner
+
         if self.board_state[self.size - 1] != self.size:
             if self.board_state[self.size - 2] == self.size - 1 or self.board_state[self.size * 2 - 1] == self.size * 2:
                 conflict_count += 1
-        # lower left corner
+
         if self.board_state[self.quad_size - self.size] != self.quad_size - self.size + 1:
             if self.board_state[self.quad_size - self.size * 2] == self.quad_size - self.size * 2 + 1 or self.board_state[self.quad_size - self.size + 1] == self.quad_size - self.size + 2:
                 conflict_count += 1
@@ -107,7 +103,6 @@ class chain15:
         neighs = []
         zero_coord = self.board_state.index(0)
 
-        # look at neighbours
         if zero_coord + 1 < self.size ** 2 and manh_dst_matrix(zero_coord, zero_coord + 1, self.size) == 1:
             new_state = self.board_state.copy()
             new_state[zero_coord], new_state[zero_coord + 1] = new_state[zero_coord + 1], new_state[zero_coord]
@@ -131,11 +126,7 @@ class chain15:
                 zero_coord]
             neighs.append(chain15(new_state, self.history + [self]))
 
-        # # Debug
-        # for i in neighs:
-        #     print(i.last_node() + "   " + str(i.f()))
-        # print("-------------------")
-        # time.sleep(1)
+
         return neighs
 
 
